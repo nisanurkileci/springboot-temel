@@ -1,17 +1,15 @@
 package com.archis.spring_bebka.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Table(name = "students")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student {
@@ -26,6 +24,14 @@ public class Student {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(
+            mappedBy = "student",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
+
+    @JsonManagedReference
+
     private List<Book> books = new ArrayList<>();
 }

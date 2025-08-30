@@ -21,20 +21,28 @@ public class StudentService {
     @PostConstruct
     public void init() {
         if (studentRepository.count() == 0) {
-            Student student = new Student();
-            student.setName("Nisa");
-            student.setEmail("nisa@example.com");
+            Student student1 = new Student();
+            student1.setName("Hilal");
+            student1.setEmail("h@.com");
 
-            Book book1 = new Book("hp", "jjk");
-            Book book2 = new Book("jack london", "Jack L");
 
-            book1.setStudent(student);
-            book2.setStudent(student);
 
-            student.getBooks().add(book1);
-            student.getBooks().add(book2);
+            Student student2 = new Student();
+            student2.setName("Nihal");
+            student2.setEmail("nh@.com");
 
-            studentRepository.save(student);
+
+
+            Book book1 = new Book("hp1", "jjk");
+            book1.setStudent(student1);
+            student1.getBooks().add(book1);
+
+            Book book2 = new Book("emma", "w");
+            book2.setStudent(student2);
+            student2.getBooks().add(book2);
+
+            studentRepository.save(student1);
+            studentRepository.save(student2);
         }
     }
 
