@@ -8,6 +8,12 @@ import com.archis.spring_bebka.response.StudentResponse;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.archis.spring_bebka.model.Student;
+import com.archis.spring_bebka.repository.StudentRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,6 +53,7 @@ public class StudentService {
     }
 
 
+
     public Student saveStudent(StudentRequest studentRequest) {
         Student student = new Student();
         student.setName(studentRequest.getName());
@@ -60,6 +67,10 @@ public class StudentService {
         return students.stream()
                 .map(this::mapToStudentResponse)
                 .collect(Collectors.toList());
+    }
+
+    public Page<Student> findAllStudents(Pageable pageable) {
+        return studentRepository.findAll(pageable);
     }
 
     private StudentResponse mapToStudentResponse(Student student) {
