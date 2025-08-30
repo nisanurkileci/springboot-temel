@@ -33,6 +33,17 @@ public class EmployeeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/search-by-name")
+    public ResponseEntity<List<Employee>> getEmployeesByName(@RequestParam String name) {
+        return ResponseEntity.ok(employeeService.findEmployeesByNameContaining(name));
+    }
+
+    
+    @GetMapping("/search-by-department")
+    public ResponseEntity<List<Employee>> getEmployeesByDepartment(@RequestParam String department) {
+        return ResponseEntity.ok(employeeService.findEmployeesByDepartment(department));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
         return ResponseEntity.ok(employeeService.update(id, employee));

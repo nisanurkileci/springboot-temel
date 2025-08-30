@@ -26,6 +26,14 @@ public class EmployeeService {
         return employeeRepository.findById(id);
     }
 
+    public List<Employee> findEmployeesByNameContaining(String name) {
+        return employeeRepository.findByNameContaining(name);
+    }
+
+    public List<Employee> findEmployeesByDepartment(String department) {
+        return employeeRepository.findByDepartment(department);
+    }
+
     public Employee update(Long id, Employee updatedEmployee) {
         return employeeRepository.findById(id)
                 .map(employee -> {
