@@ -1,11 +1,17 @@
 package com.archis.spring_bebka.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "students")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student {
@@ -19,5 +25,7 @@ public class Student {
 
     @Column(nullable = false, unique = true)
     private String email;
-}
 
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Book> books = new ArrayList<>();
+}

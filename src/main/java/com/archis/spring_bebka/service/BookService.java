@@ -19,7 +19,7 @@ public class BookService {
     @PostConstruct
     public void init() {
         if (bookRepository.count() == 0) {
-            // Sadece title ve author ile oluşturuyoruz
+
             bookRepository.save(new Book("Book A", "Author A"));
             bookRepository.save(new Book("Book B", "Author B"));
         }

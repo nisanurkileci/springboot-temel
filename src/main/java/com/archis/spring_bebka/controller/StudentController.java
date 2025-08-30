@@ -1,28 +1,37 @@
 package com.archis.spring_bebka.controller;
 
 import com.archis.spring_bebka.model.Student;
+import com.archis.spring_bebka.request.StudentRequest;
+import com.archis.spring_bebka.response.StudentResponse;
 import com.archis.spring_bebka.service.StudentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/students")
+@RequiredArgsConstructor
 public class StudentController {
 
     private final StudentService studentService;
 
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
-    }
-
     @PostMapping
-    public Student createStudent(@RequestBody Student student) {
-        return studentService.saveStudent(student);
+    public StudentResponse createStudent(@RequestBody StudentRequest studentRequest) {
+
+        Student savedStudent = studentService.saveStudent(studentRequest);
+
+        // Convert the saved entity to a DTO and return it
+        StudentResponse studentResponse = new StudentResponse();
+        studentResponse.setId(savedStudent.getId());
+        studentResponse.setName(savedStudent.getName());
+        studentResponse.setEmail(savedStudent.getEmail());
+
+        return studentResponse;
     }
 
     @GetMapping
-    public List<Student> getAllStudents() {
+    public List<StudentResponse> getAllStudents() {
         return studentService.getAllStudents();
     }
 }
