@@ -34,6 +34,14 @@ public class EmployeeService {
         return employeeRepository.findByDepartment(department);
     }
 
+    public List<Employee> findEmployeesBySalaryGreaterThan(double amount) {
+        return employeeRepository.findBySalaryGreaterThan(amount);
+    }
+
+    public List<Employee> findEmployeesByDepartmentNative(String department) {
+        return employeeRepository.findByDepartmentNative(department);
+    }
+
     public Employee update(Long id, Employee updatedEmployee) {
         return employeeRepository.findById(id)
                 .map(employee -> {

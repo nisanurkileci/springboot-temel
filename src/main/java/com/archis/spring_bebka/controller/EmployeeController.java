@@ -38,10 +38,20 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.findEmployeesByNameContaining(name));
     }
 
-    
+
     @GetMapping("/search-by-department")
     public ResponseEntity<List<Employee>> getEmployeesByDepartment(@RequestParam String department) {
         return ResponseEntity.ok(employeeService.findEmployeesByDepartment(department));
+    }
+
+    @GetMapping("/by-salary")
+    public ResponseEntity<List<Employee>> getEmployeesBySalaryGreaterThan(@RequestParam double amount) {
+        return ResponseEntity.ok(employeeService.findEmployeesBySalaryGreaterThan(amount));
+    }
+
+    @GetMapping("/by-department-native")
+    public ResponseEntity<List<Employee>> getEmployeesByDepartmentNative(@RequestParam String department) {
+        return ResponseEntity.ok(employeeService.findEmployeesByDepartmentNative(department));
     }
 
     @PutMapping("/{id}")
