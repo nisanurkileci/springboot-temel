@@ -8,12 +8,8 @@ import com.archis.spring_bebka.response.StudentResponse;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.archis.spring_bebka.model.Student;
-import com.archis.spring_bebka.repository.StudentRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,13 +27,9 @@ public class StudentService {
             student1.setName("Hilal");
             student1.setEmail("h@.com");
 
-
-
             Student student2 = new Student();
             student2.setName("Nihal");
             student2.setEmail("nh@.com");
-
-
 
             Book book1 = new Book("hp1", "jjk");
             book1.setStudent(student1);
@@ -52,15 +44,12 @@ public class StudentService {
         }
     }
 
-
-
     public Student saveStudent(StudentRequest studentRequest) {
         Student student = new Student();
         student.setName(studentRequest.getName());
         student.setEmail(studentRequest.getEmail());
         return studentRepository.save(student);
     }
-
 
     public List<StudentResponse> getAllStudents() {
         List<Student> students = studentRepository.findAll();
@@ -69,7 +58,7 @@ public class StudentService {
                 .collect(Collectors.toList());
     }
 
-    public Page<Student> findAllStudents(Pageable pageable) {
+    public Page<Student> getAllStudents(Pageable pageable) {
         return studentRepository.findAll(pageable);
     }
 

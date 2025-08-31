@@ -14,6 +14,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -43,8 +45,10 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
+
     @GetMapping("/paged")
     public ResponseEntity<Page<Student>> getAllStudentsPaged(Pageable pageable) {
+        // Doğru metot çağrısı:
         Page<Student> students = studentService.getAllStudents(pageable);
         return ResponseEntity.ok(students);
     }
