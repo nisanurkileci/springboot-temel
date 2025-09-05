@@ -1,8 +1,8 @@
 package com.archis.spring_bebka.service;
 
 import com.archis.spring_bebka.model.Student;
-import com.archis.spring_bebka.request.StudentRequest;
-import com.archis.spring_bebka.response.StudentResponse;
+import com.archis.spring_bebka.dto.request.StudentRequest;
+import com.archis.spring_bebka.dto.response.StudentResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

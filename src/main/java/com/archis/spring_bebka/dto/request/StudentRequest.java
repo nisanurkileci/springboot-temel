@@ -1,4 +1,4 @@
-package com.archis.spring_bebka.response;
+package com.archis.spring_bebka.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +9,8 @@ import lombok.AllArgsConstructor;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentResponse {
-    private Long id;
+public class StudentRequest {
+
     private String name;
     private String email;
 }
