@@ -1,22 +1,24 @@
 package com.archis.spring_bebka.service;
 
+import com.archis.spring_bebka.dto.UserDto;
 
-
-import com.archis.spring_bebka.model.User;
-import java.util.Optional;
 import java.util.List;
-
+import java.util.Optional;
 
 public interface UserService {
 
-    User save(User user);
 
-    Optional<User> findById(Long id);
+    UserDto save(UserDto userDto);
 
-    List<User> findAll();
 
-    User update(User user);
+    UserDto findById(Long id);
+
+
+    List<UserDto> findAll();
+
+
+    UserDto update(Long id, UserDto userDto);
+
 
     void deleteById(Long id);
-
 }
